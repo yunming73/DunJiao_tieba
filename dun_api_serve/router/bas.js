@@ -1,0 +1,74 @@
+const express = require('express')
+const router = express.Router()
+
+// 导入吧路由处理函数模块
+const Handler = require('../router_handler/bas')
+    // 获取吧列表
+router.get('/bas', Handler.getBas)
+    // 添加贴吧
+router.post('/addbas', Handler.addBas)
+    // 删除贴吧
+router.delete('/delbas', Handler.delBas)
+    // 查询吧信息
+router.get('/bas/:id', Handler.search)
+    // 获取关注吧的用户列表
+router.get('/bas/getBaUsers/:id', Handler.getBaUsers)
+    // 查询贴吧加精帖子
+router.get('/bas/essence/:id', Handler.searchEssence)
+    // 获取吧所属帖子列表
+router.get('/bass/contenss', Handler.getContent)
+    // 查询主贴信息
+router.get('/bas/contents/:id', Handler.searchContent)
+    // 删除主贴
+router.delete('/bas/content/del/:id', Handler.DelContent)
+    //获取主贴点赞数量 收藏数量 评论数量
+router.get('/bas/content/stats/:id', Handler.getContentStats)
+    // 获取主帖的从贴列表
+router.get('/bas/content/comment', Handler.getContentComment)
+    // 获取楼主发言的从贴列表
+router.get('/bas/content/landlordComment', Handler.getLandlordContentComment)
+    //获取从贴点赞数量 评论数量
+router.get('/bas/content/comment/stats/:id', Handler.getContentCommentStats)
+    // 删除主贴的从贴
+router.delete('/bas/content/comment/del/:id', Handler.DelContentComment)
+    // 加精主贴
+router.put('/bas/content/Essence/:id', Handler.addEssenceComment)
+    // 取消加精主贴
+router.put('/bas/content/delEssence/:id', Handler.delEssenceComment)
+    // 获取从贴的评论列表
+router.get('/bas/content/comment/s', Handler.getContentComments)
+    // 删除从贴的评论
+router.delete('/bas/content/comment/s/del/:id', Handler.DelContentComments)
+    // 用户发表主贴
+router.post('/bas/content/add', Handler.addMainComment)
+    // 修改主贴
+router.put('/bas/content/submit/:id', Handler.submitMainComment)
+    // 用户发表从贴
+router.post('/bas/content/follow/add', Handler.addFollowComment)
+    // 用户发表从贴评论
+router.post('/bas/content/comment/s/add', Handler.addComment)
+    // 用户发表从贴评论的回复
+router.post('/bas/content/comment/s/readd', Handler.addCommentRespond)
+    // 用户点击关注贴吧
+router.post('/bas/collect', Handler.addCollect)
+    // 用户点击取消关注贴吧
+router.delete('/bas/delCollect', Handler.delCollect)
+    // 查询用户是否收藏这个帖子
+router.get('/bas/content/seaCollect', Handler.seaContentComments)
+    // 用户收藏主贴
+router.post('/bas/content/addCollect', Handler.addContentCollect)
+    // 用户取消收藏主贴
+router.delete('/bas/content/delCollect', Handler.delContentCollect)
+    // 查询用户是否点赞这个主帖
+router.get('/bas/content/seaCollectLike', Handler.seaContentLike)
+    // 用户点赞主贴
+router.post('/bas/content/addCollectLike', Handler.addContentLike)
+    // 用户取消点赞主贴
+router.delete('/bas/content/delCollectLike', Handler.delContentLike)
+    // 查询用户是否点赞这个从贴
+router.get('/bas/content/comment/seaCollectLike', Handler.seaContentCommentLike)
+    // 用户点赞从贴
+router.post('/bas/content/comment/addCollectLike', Handler.addContentCommentLike)
+    // 用户取消点赞从贴
+router.delete('/bas/content/comment/delCollectLike', Handler.delContentCommentLike)
+module.exports = router

@@ -1,0 +1,5 @@
+{
+    "upload_config": {
+        "baseURL": "http://172.18.32.121:8080/"
+    }
+}
