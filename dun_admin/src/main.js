@@ -7,8 +7,6 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 // element图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-// element中文
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import store from './store'
 // // 1.重置样式的库
 import 'normalize.css'
@@ -18,10 +16,6 @@ import '@/assets/styles/common.less'
 // import UI from '@/components/library'
 // 创建一个vue应用实例
 const app = createApp(App)
-    // 全局配置element中文
-app.use(ElementPlus, {
-    locale: zhCn,
-})
 app.use(store)
 app.use(ElementPlus)
 app.use(router)

@@ -141,8 +141,8 @@ exports.getContentHot = (req, res) => {
         var mg_time_before = mg_time - 518400
         var sql = "SELECT * FROM dj_content WHERE ? <=co_add_time AND co_add_time <= ?"
         db.query(sql, [mg_time_before, mg_time], (err, result) => {
-            // console.log(result);
-            if (err) return res.ResData('查询失败', 1, err)
+            if (err) return res.ResData('查询失败', err)
+            if(result.length==0) return res.ResData("热门帖子为空", 204,[])
                 // 从贴评论数
             var getContents = []
             for (let i = 0; i < result.length; i++) {
@@ -162,9 +162,8 @@ exports.getContentHot = (req, res) => {
                     getContents.sort(function(x, y) {
                             return x.comment_num > y.comment_num ? -1 : 1;
                         })
-                        // console.log(getContents);
                     if (getContents.length > 10) getContents = getContents.slice(0, 10)
-                    if (i == result.length - 1) return res.ResData("首页热门列表成功", 200, getContents)
+                    if (i == result.length - 1) return res.ResData("获取首页热门帖子成功", 200, getContents)
                 })
             }
         })

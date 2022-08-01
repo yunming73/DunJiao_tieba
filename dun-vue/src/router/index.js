@@ -51,7 +51,6 @@ const Search = () =>
     import ('@/components/search')
 const MemberHistory = () =>
     import ('@/views/member/components/member_history')
-    // 其他用户
 const OtherUser = () =>
     import ('@/views/other_user/index')
 const UserDynamic = () =>
