@@ -66,10 +66,11 @@ exports.logout = (req, res) => {
     // 后台管理员登录
 exports.adminLogin = (req, res) => {
     const userinfo = req.body;
-    const sql = 'SELECT * FROM dj_users WHERE user_type=0'
-    db.query(sql, (err, result) => {
+    const sql = "SELECT * FROM dj_users WHERE user_type=0 and uname=?"
+    db.query(sql,userinfo.username ,(err, result) => {
         if (err) return res.ResData(err.message);
-        if (result[0].uname !== userinfo.username) return res.ResData('用户名错误错误')
+        if(result.length==0) return res.ResData("用户不存在")
+        if (result[0].uname !== userinfo.username) return res.ResData('该用户不是管理员!')
         const compareResult = bcrypt.compareSync(userinfo.password, result[0].upassword)
         if (!compareResult) return res.ResData('密码错误')
             // 生成token字符串 --清除密码

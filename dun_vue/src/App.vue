@@ -1,6 +1,7 @@
 <template>
-    <!-- 一级路由 -->
-    <RouterView v-if="isRouterAlive" />
+  <!-- 一级路由 -->
+  <RouterView v-if="isRouterAlive" />
+  <!-- <BLank v-else /> -->
 </template>
 <script>
 import { ref, nextTick, provide } from "vue";

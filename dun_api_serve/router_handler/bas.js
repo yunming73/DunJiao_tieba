@@ -32,7 +32,6 @@ exports.getBas = (req, res) => {
                     page_num = Math.floor(total / page_size)
                 }
                 var retUsers = []
-                    // var content_title = [];
                 for (i in result) {
                     retUsers.push({
                         'id': result[i].ba_id,
@@ -41,7 +40,6 @@ exports.getBas = (req, res) => {
                         'ba_user_id': result[i].ba_user_id,
                         'ba_signature': result[i].ba_signature,
                     })
-
                 }
                 const data = {
                     "totalpage": total,
@@ -49,9 +47,7 @@ exports.getBas = (req, res) => {
                     "result": retUsers,
                 }
                 res.ResData("获取贴吧列表成功", 200, data)
-
             })
-
         })
     }
     // 添加贴吧
